@@ -38,9 +38,9 @@ I would recommend Google Cloud because the company focuses on Artificial Intelli
 
 ### Services the Client Could Use
 
-- **Compute Engine** – for running high-performance computing workloads.
-- **Vertex AI** – for developing, training, and deploying machine learning models.
-- **Google Kubernetes Engine (GKE)** – for running containerized AI applications.
+- **Compute Engine** 
+- **Vertex AI** .
+- **Google Kubernetes Engine (GKE)** 
 
 ---
 
