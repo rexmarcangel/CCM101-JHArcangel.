@@ -9,3 +9,9 @@
 <img width="1440" height="852" alt="image" src="https://github.com/user-attachments/assets/87e94893-d653-47c8-99a2-744e8d1712c6" />
 
 ## KILLERCODE TERMINAL
+<img width="975" height="577" alt="image" src="https://github.com/user-attachments/assets/df8c63d5-8b1b-4806-bbab-8f94d800805f" />
+<img width="975" height="577" alt="image" src="https://github.com/user-attachments/assets/0bf3e9fa-58bb-4969-b6ec-4154ba72fc1e" />
+<img width="975" height="114" alt="image" src="https://github.com/user-attachments/assets/1fa3a664-8458-4c1c-b981-2c961b46a8aa" />
+<img width="975" height="122" alt="image" src="https://github.com/user-attachments/assets/1d5bfb1e-1396-4c18-922a-69acd3e131a2" />
+
+
