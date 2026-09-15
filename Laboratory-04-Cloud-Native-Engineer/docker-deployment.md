@@ -32,6 +32,9 @@ docker rm nginx-server
 ```
 This command permanently removes the stopped `nginx-server` container from the Docker environment.
 
+<img width="1440" height="852" alt="image" src="https://github.com/user-attachments/assets/112cf572-afd2-42e3-81e5-e787b9cb99d0" />
+
+
 ## Lifecycle conclusion
 
 The Docker container lifecycle starts by running a container, checking its status, stopping it when it is no longer needed, and finally removing it completely.
