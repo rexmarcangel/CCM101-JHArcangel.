@@ -1,6 +1,6 @@
 ## Container Lifecycle Commands
 
-### 1. List Running Containers
+### 1. Running Containers
 ```bash
 docker ps
 ```
