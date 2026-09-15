@@ -1,5 +1,5 @@
 | Category            | Virtual Machines (VMs)                                            | Containers                                                 |
-| ------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------- |
+| - | - | -|
 | Architecture        | Uses a Guest OS for each virtual machine.                         | Shares the Host OS while keeping the application isolated. |
 | Boot Time           | Usually takes minutes to boot.                                    | Usually starts within seconds.                             |
 | Resource Efficiency | Uses more RAM and storage because it has a full operating system. | Uses less RAM and storage because it shares the Host OS.   |
