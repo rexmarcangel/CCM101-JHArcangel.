@@ -32,7 +32,7 @@ docker rm nginx-server
 ```
 This command permanently removes the stopped `nginx-server` container from the Docker environment.
 
-** This is the Screenshot of output 
+### This is the Screenshot of output 
 <img width="1440" height="852" alt="image" src="https://github.com/user-attachments/assets/112cf572-afd2-42e3-81e5-e787b9cb99d0" />
 
 
