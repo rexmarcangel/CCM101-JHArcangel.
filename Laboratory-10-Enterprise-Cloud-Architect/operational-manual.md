@@ -52,7 +52,7 @@ The `NEXTCLOUD_TRUSTED_DOMAINS` value must contain the hostname or IP address us
 
 ### Start the services
 
-From the directory containing `docker-compose.yml` and `.env`, run:
+From the directory containing `docker-compose.yml` and `.env`, run command:
 
 ```bash
 docker compose config
@@ -87,7 +87,6 @@ Open a browser and visit:
 http://VM_IP_ADDRESS:8080
 ```
 
-Replace `VM_IP_ADDRESS` with the reachable IP address of the Ubuntu virtual machine. If VirtualBox is using NAT networking, configure port forwarding or an appropriate host-only or bridged network before expecting the Windows host browser to reach the guest directly.
 
 For real deployments, use HTTPS and an appropriate TLS configuration rather than sending credentials over plain HTTP.
 
