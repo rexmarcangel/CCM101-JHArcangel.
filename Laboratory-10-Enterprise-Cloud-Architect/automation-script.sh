@@ -1,9 +1,10 @@
+```bash
 #!/usr/bin/env bash
 set -Eeuo pipefail
 umask 077
 
 # CloudNova Enterprise Cloud - Database Backup
-# Required: Docker Compose, MariaDB container, and database credentials in .env
+# Requires Docker Compose, MariaDB, and credentials in .env
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="${PROJECT_DIR:-$SCRIPT_DIR}"
@@ -23,6 +24,15 @@ fail() {
     exit 1
 }
 
+# Check required tools.
+command -v docker >/dev/null 2>&1 || fail "Docker is not installed."
+command -v gzip >/dev/null 2>&1 || fail "gzip is not installed."
+
+# Validate retention setting.
+if ! [[ "$RETENTION_DAYS" =~ ^[0-9]+$ ]]; then
+    fail "RETENTION_DAYS must be a non-negative integer."
+fi
+
 # Load environment variables without displaying their values.
 if [[ ! -f "$PROJECT_DIR/.env" ]]; then
     fail "Missing .env file in $PROJECT_DIR"
@@ -39,6 +49,7 @@ set +a
 
 cd "$PROJECT_DIR"
 
+# Ensure the database service is running.
 if ! docker compose ps --status running --services | grep -qx 'db'; then
     fail "The db service is not running. Start the stack before backing up."
 fi
@@ -54,26 +65,35 @@ trap cleanup EXIT
 
 log "Starting database backup."
 
-if ! docker compose exec -T 
-    -e MYSQL_PWD="$MYSQL_PASSWORD" db 
-    mariadb-dump 
-    --user="$MYSQL_USER" 
-    --single-transaction 
-    --quick 
+# Dump the database and compress it.
+if docker compose exec -T \
+    -e MYSQL_PWD="$MYSQL_PASSWORD" \
+    db mariadb-dump \
+    --user="$MYSQL_USER" \
+    --single-transaction \
+    --quick \
     "$MYSQL_DATABASE" | gzip > "$TEMP_FILE"; then
-    fail "Database dump failed."
+    :
+else
+    fail "Database dump or compression failed."
 fi
 
+# Verify that the compressed backup is valid and non-empty.
 if [[ ! -s "$TEMP_FILE" ]] || ! gzip -t "$TEMP_FILE"; then
     fail "Backup file is empty or invalid."
 fi
 
+# Keep the completed backup private.
 mv "$TEMP_FILE" "$FINAL_FILE"
 chmod 600 "$FINAL_FILE"
 
-find "$BACKUP_DIR" -maxdepth 1 -type f 
-    -name 'nextcloud_db_*.sql.gz' 
+log "SUCCESS: Backup created at $FINAL_FILE"
+
+# Remove old completed database backups.
+find "$BACKUP_DIR" -maxdepth 1 -type f \
+    -name 'nextcloud_db_*.sql.gz' \
     -mtime "+$RETENTION_DAYS" -delete
 
-log "SUCCESS: Backup created at $FINAL_FILE"
 log "Old backups older than $RETENTION_DAYS days were checked for removal."
+log "Database backup process finished."
+```
