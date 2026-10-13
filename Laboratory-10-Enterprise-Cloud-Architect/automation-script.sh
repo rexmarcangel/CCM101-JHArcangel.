@@ -2,8 +2,8 @@
 set -Eeuo pipefail
 umask 077
 
-CloudNova Enterprise Cloud - Database Backup
-Required: Docker Compose, MariaDB container, and database credentials in .env
+# CloudNova Enterprise Cloud - Database Backup
+# Required: Docker Compose, MariaDB container, and database credentials in .env
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="${PROJECT_DIR:-$SCRIPT_DIR}"
@@ -29,7 +29,7 @@ if [[ ! -f "$PROJECT_DIR/.env" ]]; then
 fi
 
 set -a
-shellcheck disable=SC1091
+# shellcheck disable=SC1091
 source "$PROJECT_DIR/.env"
 set +a
 
