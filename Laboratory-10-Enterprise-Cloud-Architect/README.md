@@ -47,3 +47,9 @@ The database backup script creates compressed backup files, records its results 
 ## Learning Outcome
 
 Through this activity, our group gained practical experience in container deployment, database connectivity, network security, persistent storage, and automated backup operations. This project also helped us understand the importance of documenting and maintaining a cloud environment, not just getting the application to run.
+
+## Deployment Verification
+
+The deployment was tested on Ubuntu Server using Docker Compose. Both the Nextcloud application and MariaDB database containers were running successfully. We accessed the Nextcloud login page through the Windows host browser and confirmed that existing files remained available after restarting the application container.
+
+We also verified the persistent Docker volumes, checked the UFW firewall rules, and tested the database backup archive. The backup log recorded successful backup operations, and cron was configured to run the backup script daily at 2:00 AM according to the Ubuntu system time.
