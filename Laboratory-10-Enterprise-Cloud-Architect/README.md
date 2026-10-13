@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-For our final laboratory activity, our group designed and deployed a private cloud storage system using Nextcloud and MariaDB. The goal of our project is to understand how different parts of a cloud environment work together, from the virtual machine and network configuration to the application and database containers.
+For our final laboratory, our group designed and deployed a private cloud storage system using Nextcloud and MariaDB. The goal of our project is to understand how different parts of a cloud environment work together, from the virtual machine and network configuration to the application and database containers.
 
 We used Ubuntu Server as our operating system and Docker Compose to manage the services. We also configured a firewall and created an automated database backup script to improve the security and maintenance of our deployment.
 
